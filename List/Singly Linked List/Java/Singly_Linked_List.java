@@ -52,98 +52,89 @@ class sll {
         return insert(x, false);
     }
 
-    public sll delete(boolean data_passed,int data,boolean end,boolean all){
-        if(all){
-            if(!data_passed){
+    public sll delete(boolean data_passed, int data, boolean end, boolean all) {
+        if (all) {
+            if (!data_passed) {
                 System.out.println("No data is given");
                 return this;
             }
-            Node temp=this.head;
-            while(temp.next!=null){
-                if(temp.next.data==data){
-                    temp.next=temp.next.next;
-                    if(temp.next==null)
+            Node temp = this.head;
+            while (temp.next != null) {
+                if (temp.next.data == data) {
+                    temp.next = temp.next.next;
+                    if (temp.next == null)
                         break;
                 }
-                temp=temp.next;
+                temp = temp.next;
             }
-            System.out.println("All the Node with Data "+data+" is deleted");
-        }
-        else{
-            if(!end){
-                if(!data_passed){
-                    if(this.head==null){
+            System.out.println("All the Node with Data " + data + " is deleted");
+        } else {
+            if (!end) {
+                if (!data_passed) {
+                    if (this.head == null) {
                         System.out.println("No Node to delete");
-                    }
-                    else{
-                        this.head=this.head.next;
+                    } else {
+                        this.head = this.head.next;
                         System.out.println("Node is Deleted at the Beginning");
                     }
-                }
-                else{
-                    if(this.head==null)
+                } else {
+                    if (this.head == null)
                         System.out.println("No Node to delete");
-                    else{
-                        if(this.head.next==null){
-                            if(this.head.data==data){
-                                this.head=this.head.next;
-                                System.out.println("Node with data "+data+" is Deleted at the Beginning");
+                    else {
+                        if (this.head.next == null) {
+                            if (this.head.data == data) {
+                                this.head = this.head.next;
+                                System.out.println("Node with data " + data + " is Deleted at the Beginning");
                             }
-                        }
-                        else{
-                            Node temp=this.head;
-                            while(temp.next!=null){
-                                if(temp.next.data==data){
-                                    temp.next=temp.next.next;
-                                    System.out.println("Node with data "+data+"is Deleted at the Beginning");
+                        } else {
+                            Node temp = this.head;
+                            while (temp.next != null) {
+                                if (temp.next.data == data) {
+                                    temp.next = temp.next.next;
+                                    System.out.println("Node with data " + data + "is Deleted at the Beginning");
                                     break;
                                 }
-                                temp=temp.next;
+                                temp = temp.next;
                             }
                         }
                     }
                 }
-            }
-            else{
-                if(!data_passed){
+            } else {
+                if (!data_passed) {
 
-                    if(this.head==null)
+                    if (this.head == null)
                         System.out.println("NO data to delete");
-                    else{
-                        if(this.head.next==null){
-                            this.head=this.head.next;
-                        }
-                        else{
-                            Node temp=this.head;
-                            while(temp.next.next!=null)
-                                temp=temp.next;
-                            temp.next=temp.next.next;
+                    else {
+                        if (this.head.next == null) {
+                            this.head = this.head.next;
+                        } else {
+                            Node temp = this.head;
+                            while (temp.next.next != null)
+                                temp = temp.next;
+                            temp.next = temp.next.next;
                             System.out.println("Node is Deleted at the end");
                         }
                     }
-                }
-                else{
-                    if(this.head==null){
+                } else {
+                    if (this.head == null) {
                         System.out.println("No data to delete");
                         return this;
-                    }
-                    else{
-                        Node prev=null,temp_pre=null;
-                        boolean valid=false;
-                        Node temp=this.head;
-                        while(temp!=null){
-                            if(temp.data==data){
-                                temp_pre=prev;
-                                valid=true;
+                    } else {
+                        Node prev = null, temp_pre = null;
+                        boolean valid = false;
+                        Node temp = this.head;
+                        while (temp != null) {
+                            if (temp.data == data) {
+                                temp_pre = prev;
+                                valid = true;
                             }
-                            prev=temp;
+                            prev = temp;
                         }
-                        if(temp_pre==null){
-                            if(valid)
-                            this.head=this.head.next;
-                        }
-                        else
-                            temp_pre=temp_pre.next.next;
+                        if (temp_pre == null) {
+                            if (valid)
+                                this.head = this.head.next;
+                        } else
+                            temp_pre = temp_pre.next.next;
                     }
                 }
             }
@@ -159,12 +150,69 @@ class sll {
         return delete(true, data, false, false);
     }
 
-    public sll delete(int data, boolean end,boolean all) {
+    public sll delete(int data, boolean end, boolean all) {
         return delete(true, data, end, all);
     }
 
     public sll delete(boolean end) {
-        return delete(false, 0,end, false);
+        return delete(false, 0, end, false);
+    }
+
+    public sll replace(int old_data, int new_data) {
+        Node temp = this.head;
+        while (temp != null) {
+            if (temp.data == old_data) {
+                temp.data = new_data;
+                System.out.println(old_data + " is Replaced with " + new_data);
+                break;
+            }
+            temp = temp.next;
+        }
+        return this;
+    }
+
+    public sll replace_all(int old_data, int new_data) {
+        Node temp = this.head;
+        while (temp != null) {
+            if (temp.data == old_data) {
+                temp.data = new_data;
+
+            }
+            temp = temp.next;
+        }
+        System.out.println("All the instances of " + old_data + " is Replaced with " + new_data);
+        return this;
+    }
+
+    public int length(){
+        int length=0;
+        Node temp = this.head;
+        while(temp != null) {
+            length++;
+            temp = temp.next;
+        }
+        return length;
+    }
+
+    public sll rotate(int times){
+        if(this.head == null || this.head.next== null){
+            return this;
+        }
+        int length=this.length();
+        times%=length;
+        System.out.println(times);
+        Node tail=this.head;
+        while(tail.next!= null)
+        tail=tail.next;
+        while(times>0){
+            times--;
+            tail.next=this.head;
+            tail=tail.next;
+            this.head=this.head.next;
+            tail.next=null;
+        }
+        System.out.println("Nodes are rotated");
+        return this;
     }
 
     public sll display() {
@@ -187,12 +235,15 @@ public class Singly_Linked_List {
     public static void main(String[] args) {
         System.out.println("\n");
         sll x = new sll();
-        x.insert(5,true).insert(6,true).insert(7,true).insert(8,true).insert(6,true).insert(10,true).insert(4).insert(3).insert(2).insert(1);
-        x.display();
+        x.insert(5, true).insert(6, true).insert(7, true).insert(8, true).insert(9, true).insert(10, true).insert(4)
+                .insert(3).insert(2).insert(1);
+        /*x.display();
         x.delete(5).display();
         x.delete().display();
-         x.delete(true).display();
-         x.delete(6,true,true).display();
-        x.display();
+        x.delete(true).display();
+        x.delete(6, true, true).display();
+        x.display();*/
+        x.replace(2, -1).display();
+        x.rotate(9).display();
     }
 }
