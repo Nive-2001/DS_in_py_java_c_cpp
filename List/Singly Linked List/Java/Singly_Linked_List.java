@@ -129,6 +129,7 @@ class sll {
                                 valid = true;
                             }
                             prev = temp;
+                            temp=temp.next;
                         }
                         if (temp_pre == null) {
                             if (valid)

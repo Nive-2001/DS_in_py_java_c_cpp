@@ -184,6 +184,7 @@ class Singly_Linked_List:
                             temp_pre=pre
                             valid=True
                         pre=temp
+                        temp=temp.next;
                     if temp_pre==None:
                         if valid:
                             self.head=self.head.next
