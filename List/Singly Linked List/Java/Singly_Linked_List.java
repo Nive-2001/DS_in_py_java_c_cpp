@@ -201,7 +201,7 @@ class sll {
         }
         int length=this.length();
         times%=length;
-        System.out.println(times);
+        // System.out.println(times);
         Node tail=this.head;
         while(tail.next!= null)
         tail=tail.next;

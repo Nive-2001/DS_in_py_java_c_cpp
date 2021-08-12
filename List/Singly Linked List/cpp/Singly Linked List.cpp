@@ -174,12 +174,53 @@ public:
             }
         }
     }
+    void replace(int old_data, int new_data, bool all = false)
+    {
+        Node *temp = this->head;
+        while (temp)
+        {
+            if (temp->data == old_data)
+            {
+                temp->data = new_data;
+                if (!all)
+                    break;
+            }
+            temp = temp->next;
+        }
+    }
+    int length()
+    {
+        int length = 0;
+        Node *temp = this->head;
+        while (temp)
+        {
+            length++;
+            temp = temp->next;
+        }
+        return length;
+    }
+    void rotate(int times)
+    {
+        if (this->head == NULL || this->head->next == NULL)
+            return;
+        int length = this->length();
+        times %= length;
+        Node *tail = this->head;
+        while (times--)
+        {
+            tail->next = this->head;
+            tail = tail->next;
+            this->head = this->head->next;
+            tail->next = NULL;
+        }
+        cout << "Node are rotated\n";
+    }
     void display()
     {
         Node *temp = this->head;
         while (temp)
         {
-            cout << temp->data << "- ";
+            cout << temp->data << " ";
             temp = temp->next;
         }
         cout << endl;
@@ -200,7 +241,10 @@ int main()
     head.insert(2);
     head.insert(5);
     head.display();
-    head.delet(5, false);
+    head.delet();
+    head.display();
+    head.replace(5, 0, true);
+    head.rotate(5);
     head.display();
     return 0;
 }
