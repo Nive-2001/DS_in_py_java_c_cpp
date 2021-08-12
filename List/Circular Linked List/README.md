@@ -1,33 +1,18 @@
-insert
+### [**_Circular Linked List_**](#)
 
-* beggining
-* end
-
-* position
-
-delete
-
-* beggining
-* end
-
--[]
-
-```
-
-```
-
-beggining
-
-```
-end
-```
-
-
-position
-
-all
-
-replace
-beggining(n)
-end(n)
-position
+- [**_Insert_**](#)
+  - [**_Beginning_**](#)
+  - [**_End_**](#)
+  - [**_Specified Position_**](#)
+- [**_Delete_**](#)
+  - [**_Beginning_**](#)
+  - [**_End_**](#)
+  - [**_Value_**](#)
+    - [**_Beginning_**](#)
+    - [**_End_**](#)
+  - [**_Specified Position_**](#)
+  - [**_All_**](#)
+- [**_Replace_**](#)
+  - [**_Beginning(n)_**](#)
+  - [**_End(n)_**](#)
+  - [**_Specified Position_**](#)
