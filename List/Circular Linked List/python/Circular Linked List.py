@@ -59,7 +59,7 @@ class Circular_Linked_List:
             length = len(self)
         if position != None and (position < 0 or position > length):
             print(
-                "Position should be greater than or equal 0 and less that or equal to %d"
+                "Position should be greater than or equal 0 and less that or equal to %d "
                 % (length)
             )
         elif end is False:
