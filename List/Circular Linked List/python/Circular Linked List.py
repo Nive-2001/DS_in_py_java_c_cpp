@@ -54,7 +54,7 @@ class Circular_Linked_List:
 
     def insert(self, data, /, end=False, position=None):
         if self.head is None:
-            length=0
+            length = 0
         else:
             length = len(self)
         if position != None and (position < 0 or position > length):
@@ -80,14 +80,42 @@ class Circular_Linked_List:
             else:
                 if position == 0:
                     self.insert_at_end(data)
-                elif position==length:
+                elif position == length:
                     self.insert_at_beginning(data)
                 else:
-                    position=length-position
+                    position = length - position
                     temp = self.get_pre_position(position)
                     new_node = Node(data)
                     temp.next, new_node.next = new_node, temp.next
         return self
+
+    def delete_at_end(self):
+        if self.head == None:
+            print("No Node to delete")
+            return None
+        if self.head == self.tail:
+            print("Node is deleted at the EnD")
+            return
+        temp = self.head
+        while temp.next != self.tail:
+            temp = temp.next
+        print("Node with teh data %d at the end is deleted" % (temp.next.data))
+        temp.next = temp.next.next
+        self.tail = temp
+
+    def delete(self, /, data=None, end=False, position=None, all=False):
+        if data is None:
+            if end is False:
+                if position is None:
+                    if all is False:
+                        self.delete_at_end()
+                    else:
+                        self.head,self.tail=None,None
+                        print("List is cleared")
+                else:
+                    if all is False:
+                        
+        pass
 
     def display(self):
         """
